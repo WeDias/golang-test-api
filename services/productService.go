@@ -17,7 +17,7 @@ func GetProduct(productId string) (*entities.Product, error) {
 	var err error
 	var product *entities.Product
 	database.Conn.Find(&product, productId)
-	if product.ID == 0 {
+	if product.Id == 0 {
 		err = errors.New("product not found")
 	}
 	return product, err

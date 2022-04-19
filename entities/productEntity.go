@@ -1,9 +1,7 @@
 package entities
 
-import "gorm.io/gorm"
-
 type Product struct {
-	gorm.Model
+	Id             uint64  `gorm:"primaryKey" json:"id"`
 	Name           string  `json:"name"`
 	Price          float32 `json:"price"`
 	AvailableStock uint    `json:"stock"`

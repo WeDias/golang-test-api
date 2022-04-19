@@ -1,8 +1,7 @@
 package database
 
 import (
-	"github.com/WeDias/golang-test-api/entities"
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
@@ -10,9 +9,9 @@ var Conn *gorm.DB
 
 func InitDatabase() {
 	var err error
-	Conn, err = gorm.Open(sqlite.Open("database/database.db"), &gorm.Config{})
+	dsn := "host=postgres-go user=postgres password=postgres dbname=postgres port=5432"
+	Conn, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
-	Conn.AutoMigrate(&entities.Product{})
 }

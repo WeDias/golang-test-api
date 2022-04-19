@@ -1,0 +1,27 @@
+curl --request POST \
+  --url http://localhost:3000/api/v1/product \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"name": "Produto 1",
+	"price": 10.99,
+	"stock": 12
+}'
+
+curl --request GET \
+  --url http://localhost:3000/api/v1/product \
+  --header 'Content-Type: application/json'
+
+curl --request GET \
+  --url http://localhost:3000/api/v1/product/1 \
+  --header 'Content-Type: application/json'
+
+curl --request PUT \
+  --url http://localhost:3000/api/v1/product/1 \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"name": "Outro Nome",
+	"price": 8.99
+}'
+
+curl --request DELETE \
+  --url http://localhost:3000/api/v1/product/1

@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  postgres-go:
+    container_name: postgres-go
+    build: 
+      context: .
+      dockerfile: dockerfile.postgres
+    ports:
+      - 5433:5432
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server-go:
+    container_name: server-go
+    build: 
+      context: .
+      dockerfile: dockerfile.server
+    ports:
+      - 3000:3000
+    depends_on:
+      postgres-go:
+        condition: service_healthy
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
