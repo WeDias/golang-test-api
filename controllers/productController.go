@@ -29,7 +29,10 @@ func GetProduct(ctx *fiber.Ctx) error {
 }
 
 func GetProducts(ctx *fiber.Ctx) error {
-	products, _ := services.GetProducts()
+	products, err := services.GetProducts()
+	if err != nil {
+		return ctx.Status(404).JSON(fiber.Map{"error": err.Error()})
+	}
 	return ctx.JSON(products)
 }
 

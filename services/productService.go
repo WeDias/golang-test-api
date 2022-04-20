@@ -10,6 +10,9 @@ import (
 func NewProduct(product *entities.Product) (*entities.Product, error) {
 	var err error
 	database.Conn.Create(&product)
+	if product.ProCod == 0 {
+		err = errors.New("product was not created")
+	}
 	return product, err
 }
 
@@ -17,7 +20,7 @@ func GetProduct(productId string) (*entities.Product, error) {
 	var err error
 	var product *entities.Product
 	database.Conn.Find(&product, productId)
-	if product.Id == 0 {
+	if product.ProCod == 0 {
 		err = errors.New("product not found")
 	}
 	return product, err
@@ -27,6 +30,9 @@ func GetProducts() (*[]entities.Product, error) {
 	var err error
 	var products *[]entities.Product
 	database.Conn.Find(&products)
+	if *products == nil {
+		err = errors.New("products not found")
+	}
 	return products, err
 }
 

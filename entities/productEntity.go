@@ -1,8 +1,8 @@
 package entities
 
 type Product struct {
-	Id             uint64  `gorm:"primaryKey" json:"id"`
-	Name           string  `json:"name"`
-	Price          float32 `json:"price"`
-	AvailableStock uint    `json:"stock"`
+	ProCod            int64   `gorm:"primaryKey" json:"id"`
+	ProName           string  `json:"name"`
+	ProPrice          float32 `json:"price"`
+	ProAvailableStock uint    `json:"stock"`
 }

@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN go mod download
+RUN apk update && apk add bash && bash setup-env.sh docker
 RUN go build -o server
 
 EXPOSE 3000
