@@ -8,12 +8,10 @@ curl --request POST \
 }'
 
 curl --request GET \
-  --url http://localhost:3000/api/v1/product \
-  --header 'Content-Type: application/json'
+  --url http://localhost:3000/api/v1/product
 
 curl --request GET \
-  --url http://localhost:3000/api/v1/product/1 \
-  --header 'Content-Type: application/json'
+  --url http://localhost:3000/api/v1/product/1
 
 curl --request PUT \
   --url http://localhost:3000/api/v1/product/1 \

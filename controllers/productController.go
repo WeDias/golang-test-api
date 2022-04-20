@@ -39,7 +39,7 @@ func GetProducts(ctx *fiber.Ctx) error {
 func UpdateProduct(ctx *fiber.Ctx) error {
 	var product *entities.Product
 	if err := ctx.BodyParser(&product); err != nil {
-		return ctx.Status(500).SendString(err.Error())
+		return ctx.Status(500).JSON(fiber.Map{"error": err.Error()})
 	}
 
 	product, err := services.UpdateProduct(product, ctx.Params("id"))
