@@ -9,9 +9,9 @@ import (
 
 func NewProduct(product *entities.Product) (*entities.Product, error) {
 	var err error
-	database.Conn.Create(&product)
-	if product.ProCod == 0 {
-		err = errors.New("product was not created")
+	tx := database.Conn.Create(&product)
+	if tx.Error != nil {
+		err = errors.New(tx.Error.Error())
 	}
 	return product, err
 }
@@ -19,8 +19,10 @@ func NewProduct(product *entities.Product) (*entities.Product, error) {
 func GetProduct(productId string) (*entities.Product, error) {
 	var err error
 	var product *entities.Product
-	database.Conn.Find(&product, productId)
-	if product.ProCod == 0 {
+	tx := database.Conn.Find(&product, productId)
+	if tx.Error != nil {
+		err = errors.New(tx.Error.Error())
+	} else if product.Cod == 0 {
 		err = errors.New("product not found")
 	}
 	return product, err
@@ -29,8 +31,10 @@ func GetProduct(productId string) (*entities.Product, error) {
 func GetProducts() (*[]entities.Product, error) {
 	var err error
 	var products *[]entities.Product
-	database.Conn.Find(&products)
-	if *products == nil {
+	tx := database.Conn.Order("pro_cod").Find(&products)
+	if tx.Error != nil {
+		err = errors.New(tx.Error.Error())
+	} else if *products == nil {
 		err = errors.New("products not found")
 	}
 	return products, err
@@ -38,12 +42,22 @@ func GetProducts() (*[]entities.Product, error) {
 
 func UpdateProduct(newProduct *entities.Product, productId string) (*entities.Product, error) {
 	product, err := GetProduct(productId)
-	database.Conn.Model(product).Updates(newProduct)
+	if err == nil {
+		tx := database.Conn.Model(product).Updates(newProduct)
+		if tx.Error != nil {
+			err = errors.New(tx.Error.Error())
+		}
+	}
 	return product, err
 }
 
 func DeleteProduct(productId string) (*entities.Product, error) {
 	product, err := GetProduct(productId)
-	database.Conn.Delete(product)
+	if err == nil {
+		tx := database.Conn.Delete(product)
+		if tx.Error != nil {
+			err = errors.New(tx.Error.Error())
+		}
+	}
 	return product, err
 }
