@@ -16,10 +16,14 @@
 
 - ## How to install and run (manually)
 
-- ### Installing the dependencies
+- ### Installing the dependencies and setup env
   Inside the newly cloned project folder run the following command to install the dependencies:
   ```
   $ go mod download
+  ```
+  To configure the environment run this command:
+  ```
+  $ bash setup-env.sh
   ```
 
 - ### Running the application
@@ -36,9 +40,9 @@
 	--url http://localhost:3000/api/v1/product \
 	--header 'Content-Type: application/json' \
 	--data '{
-			"name": "product1",
-			"price": 10.99,
-			"stock": 10
+		"name": "product1",
+		"price": 10.99,
+		"stock": 10
 	}'
 
 	> {"id":1,"name":"product1","price":10.99,"stock":10}
@@ -69,9 +73,9 @@
 	--url http://localhost:3000/api/v1/product/1 \
 	--header 'Content-Type: application/json' \
 	--data '{
-			"name": "a product",
-			"price": 8.99,
-			"stock": 5
+		"name": "a product",
+		"price": 8.99,
+		"stock": 5
 	}'
 
 	> {"id":1,"name":"a product","price":8.99,"stock":5}
