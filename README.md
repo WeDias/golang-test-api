@@ -25,6 +25,15 @@
   ```
   $ bash setup-env.sh
   ```
+  It will generate a .env file with the variables below, you can edit to adapt with your database settings.
+  ```
+  PG_HOST=localhost
+  PG_PASS=postgres
+  PG_USER=postgres
+  PG_DBNM=postgres
+  PG_PORT=5432
+  ```
+  After that, run the ddl-database.sql file in your database which is inside the resources folder.
 
 - ### Running the application
   Inside the project, run the following command to run the application:
