@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/WeDias/golang-test-api/routes"
@@ -12,8 +13,19 @@ import (
 
 func main() {
 	app := fiber.New()
+
 	app.Use(cors.New())
+
 	app.Use(logger.New())
+
+	app.Use(func(ctx *fiber.Ctx) error {
+		if err := ctx.Next(); err != nil {
+			return ctx.Status(404).JSON(fiber.Map{
+				"error": fmt.Sprintf("invalid endpoint '%s'", ctx.Path()),
+			})
+		}
+		return nil
+	})
 
 	api := app.Group("/api/v1")
 	routes.SetupProductRoutes(api)
