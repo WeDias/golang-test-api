@@ -1,6 +1,7 @@
 /docs
 
 .env
+logs.txt
 .gitignore
 docker-compose.yml
 dockerfile.*

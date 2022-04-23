@@ -5,6 +5,7 @@ import (
 
 	"github.com/WeDias/golang-test-api/database"
 	"github.com/WeDias/golang-test-api/entities"
+	"github.com/WeDias/golang-test-api/utils"
 )
 
 func NewProduct(product *entities.Product) (*entities.Product, error) {
@@ -12,6 +13,7 @@ func NewProduct(product *entities.Product) (*entities.Product, error) {
 	tx := database.Conn.Create(&product)
 	if tx.Error != nil {
 		err = errors.New(tx.Error.Error())
+		utils.WarningLog.Println(err.Error())
 	}
 	return product, err
 }
@@ -22,6 +24,7 @@ func GetProduct(productId string) (*entities.Product, error) {
 	tx := database.Conn.Find(&product, productId)
 	if tx.Error != nil {
 		err = errors.New(tx.Error.Error())
+		utils.WarningLog.Println(err.Error())
 	} else if product.Cod == 0 {
 		err = errors.New("product not found")
 	}
@@ -34,6 +37,7 @@ func GetProducts() (*[]entities.Product, error) {
 	tx := database.Conn.Order("pro_cod").Find(&products)
 	if tx.Error != nil {
 		err = errors.New(tx.Error.Error())
+		utils.WarningLog.Println(err.Error())
 	} else if *products == nil {
 		err = errors.New("products not found")
 	}
@@ -46,6 +50,7 @@ func UpdateProduct(newProduct *entities.Product, productId string) (*entities.Pr
 		tx := database.Conn.Model(product).Updates(newProduct)
 		if tx.Error != nil {
 			err = errors.New(tx.Error.Error())
+			utils.WarningLog.Println(err.Error())
 		}
 	}
 	return product, err
@@ -57,6 +62,7 @@ func DeleteProduct(productId string) (*entities.Product, error) {
 		tx := database.Conn.Delete(product)
 		if tx.Error != nil {
 			err = errors.New(tx.Error.Error())
+			utils.WarningLog.Println(err.Error())
 		}
 	}
 	return product, err

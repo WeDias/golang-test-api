@@ -2,7 +2,7 @@ curl --request POST \
   --url http://localhost:3000/api/v1/product \
   --header 'Content-Type: application/json' \
   --data '{
-	"name": "Produto 1",
+	"name": "product1",
 	"price": 10.99,
 	"stock": 12
 }'
@@ -17,8 +17,9 @@ curl --request PUT \
   --url http://localhost:3000/api/v1/product/1 \
   --header 'Content-Type: application/json' \
   --data '{
-	"name": "Outro Nome",
-	"price": 8.99
+	"name": "a product",
+	"price": 8.99,
+  "stock": 5
 }'
 
 curl --request DELETE \

@@ -16,3 +16,4 @@
 
 *.db
 .env
+logs.txt
