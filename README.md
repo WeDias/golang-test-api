@@ -32,6 +32,8 @@
   PG_USER=postgres
   PG_DBNM=postgres
   PG_PORT=5432
+  
+  API_PORT=:3000
   ```
   After that, run the ddl-database.sql file in your database which is inside the resources folder.
 
