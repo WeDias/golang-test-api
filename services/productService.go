@@ -12,7 +12,7 @@ func NewProduct(product *entities.Product) (*entities.Product, error) {
 	var err error
 	tx := database.Conn.Create(&product)
 	if tx.Error != nil {
-		err = errors.New(tx.Error.Error())
+		err = tx.Error
 		utils.WarningLog.Println(err.Error())
 	}
 	return product, err
@@ -23,7 +23,7 @@ func GetProduct(productId string) (*entities.Product, error) {
 	var product *entities.Product
 	tx := database.Conn.Find(&product, productId)
 	if tx.Error != nil {
-		err = errors.New(tx.Error.Error())
+		err = tx.Error
 		utils.WarningLog.Println(err.Error())
 	} else if product.Cod == 0 {
 		err = errors.New("product not found")
@@ -36,7 +36,7 @@ func GetProducts() (*[]entities.Product, error) {
 	var products *[]entities.Product
 	tx := database.Conn.Order("pro_cod").Find(&products)
 	if tx.Error != nil {
-		err = errors.New(tx.Error.Error())
+		err = tx.Error
 		utils.WarningLog.Println(err.Error())
 	} else if *products == nil {
 		err = errors.New("products not found")
@@ -49,7 +49,7 @@ func UpdateProduct(newProduct *entities.Product, productId string) (*entities.Pr
 	if err == nil {
 		tx := database.Conn.Model(product).Updates(newProduct)
 		if tx.Error != nil {
-			err = errors.New(tx.Error.Error())
+			err = tx.Error
 			utils.WarningLog.Println(err.Error())
 		}
 	}
@@ -61,7 +61,7 @@ func DeleteProduct(productId string) (*entities.Product, error) {
 	if err == nil {
 		tx := database.Conn.Delete(product)
 		if tx.Error != nil {
-			err = errors.New(tx.Error.Error())
+			err = tx.Error
 			utils.WarningLog.Println(err.Error())
 		}
 	}
