@@ -63,7 +63,7 @@
 	"stock": 10
   }'
 
-  > {"id":1,"name":"product1","price":10.99,"stock":10}
+  # > {"id":1,"name":"product1","price":10.99,"stock":10}
   ```
 
   #### Get all products:
@@ -73,7 +73,7 @@
   $ curl --request GET \
   --url http://localhost:3000/api/v1/product
 
-  > [{"id":1,"name":"product1","price":10.99,"stock":10}]
+  # > [{"id":1,"name":"product1","price":10.99,"stock":10}]
   ```
 
   #### Get a product by id:
@@ -83,7 +83,7 @@
   $ curl --request GET \
   --url http://localhost:3000/api/v1/product/1
 
-  > {"id":1,"name":"product1","price":10.99,"stock":10}
+  # > {"id":1,"name":"product1","price":10.99,"stock":10}
   ```
   
   #### Update a product by id:
@@ -99,7 +99,7 @@
 	"stock": 5
   }'
 
-  > {"id":1,"name":"a product","price":8.99,"stock":5}
+  # > {"id":1,"name":"a product","price":8.99,"stock":5}
   ```
 
   #### Delete a product by id:
@@ -109,5 +109,5 @@
   $ curl --request DELETE \
   --url http://localhost:3000/api/v1/product/1
 
-  > {"id":1,"name":"a product","price":8.99,"stock":5}
+  # > {"id":1,"name":"a product","price":8.99,"stock":5}
   ```
