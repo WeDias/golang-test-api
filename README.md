@@ -1,4 +1,9 @@
-- # golang-test-api
+[![License](http://img.shields.io/github/license/BureauTech/Cadastrol-Server)](https://github.com/WeDias/golang-test-api/blob/main/LICENSE)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/WeDias/golang-test-api/)
+[![Go CI](https://github.com/WeDias/golang-test-api/actions/workflows/go.yml/badge.svg)](https://github.com/WeDias/golang-test-api/actions/workflows/go.yml)
+[![Docker Image CI](https://github.com/WeDias/golang-test-api/actions/workflows/docker-image.yml/badge.svg)](https://github.com/WeDias/golang-test-api/actions/workflows/docker-image.yml)
+
+# golang-test-api
   A simple CRUD API made with Go, Postgres, FIber, Gorm and Docker.
 
 - ## Cloning the repository
@@ -58,7 +63,7 @@
 	"stock": 10
   }'
 
-  > {"id":1,"name":"product1","price":10.99,"stock":10}
+  # > {"id":1,"name":"product1","price":10.99,"stock":10}
   ```
 
   #### Get all products:
@@ -68,7 +73,7 @@
   $ curl --request GET \
   --url http://localhost:3000/api/v1/product
 
-  > [{"id":1,"name":"product1","price":10.99,"stock":10}]
+  # > [{"id":1,"name":"product1","price":10.99,"stock":10}]
   ```
 
   #### Get a product by id:
@@ -78,7 +83,7 @@
   $ curl --request GET \
   --url http://localhost:3000/api/v1/product/1
 
-  > {"id":1,"name":"product1","price":10.99,"stock":10}
+  # > {"id":1,"name":"product1","price":10.99,"stock":10}
   ```
   
   #### Update a product by id:
@@ -94,7 +99,7 @@
 	"stock": 5
   }'
 
-  > {"id":1,"name":"a product","price":8.99,"stock":5}
+  # > {"id":1,"name":"a product","price":8.99,"stock":5}
   ```
 
   #### Delete a product by id:
@@ -104,5 +109,5 @@
   $ curl --request DELETE \
   --url http://localhost:3000/api/v1/product/1
 
-  > {"id":1,"name":"a product","price":8.99,"stock":5}
+  # > {"id":1,"name":"a product","price":8.99,"stock":5}
   ```
