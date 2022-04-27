@@ -1,4 +1,9 @@
-- # golang-test-api
+[![License](http://img.shields.io/github/license/BureauTech/Cadastrol-Server)](https://github.com/WeDias/golang-test-api/blob/main/LICENSE)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/WeDias/golang-test-api/)
+[![Go CI](https://github.com/WeDias/golang-test-api/actions/workflows/go.yml/badge.svg)](https://github.com/WeDias/golang-test-api/actions/workflows/go.yml)
+[![Docker Image CI](https://github.com/WeDias/golang-test-api/actions/workflows/docker-image.yml/badge.svg)](https://github.com/WeDias/golang-test-api/actions/workflows/docker-image.yml)
+
+# golang-test-api
   A simple CRUD API made with Go, Postgres, FIber, Gorm and Docker.
 
 - ## Cloning the repository
