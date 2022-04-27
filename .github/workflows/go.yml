@@ -37,6 +37,7 @@ jobs:
     
     - name: Set up postgres
       run: |
+        apt-get update
         apt-get install --yes --no-install-recommends postgresql-client
         PGPASSWORD=postgres psql postgres -h localhost -d postgres -f ./resources/ddl-database.sql
 
